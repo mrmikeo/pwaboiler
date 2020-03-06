@@ -1,0 +1,112 @@
+.pretty-select {
+    position: relative;
+    cursor: pointer;
+    display: inline-block; 
+    width:100px;
+
+}
+
+.pretty-select:hover .pretty-select__current,
+.pretty-select--active .pretty-select__current {
+    background: #d4d7de
+}
+
+.pretty-select:hover .pretty-select__current::before,
+.pretty-select--active .pretty-select__current::before {
+    background: #c1c5c8
+}
+
+.pretty-select:focus {
+    outline: 1px dotted #021b3d
+}
+
+.pretty-select--active {
+    z-index: 999
+}
+
+.pretty-select--active .pretty-select__current::after {
+    transform: rotate(180deg) scaleX(0.7)
+}
+
+.pretty-select--active .pretty-select__list {
+    top: 100%;
+    transform: scale(1) translateY(0);
+    opacity: 1;
+    transition-delay: 0s, 0s, 0s
+}
+
+.pretty-select__select {
+    display: none
+}
+
+.pretty-select__current {
+    background: #f1f2f4;
+    height: 38px;
+    line-height: 38px;
+    /*padding: 0 65px 0 16px;*/
+    padding: 0 60px 0 10px;
+    border-radius: 4px;
+    transition: background-color .2s
+}
+
+.pretty-select__current::before,
+.pretty-select__current::after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 2
+}
+
+.pretty-select__current::before {
+    width: 45px;
+    bottom: 0;
+    background-color: #dcdee0;
+    border-radius: 0 4px 4px 0;
+    transition: background-color .2s
+}
+
+.pretty-select__current::after {
+    border: 8px solid transparent;
+    transform: scaleX(0.7);
+    border-top-color: #021b3d;
+    top: 14px;
+    right: 14px;
+    transition: transform 0.25s;
+    transform-origin: 50% 4px
+}
+
+.pretty-select__list {
+    list-style: none;
+    position: absolute;
+    top: -999em;
+    margin: 2px 0 0;
+    min-width: 100%;
+    border: 1px solid #dcdee0;
+    background-color: #f1f2f4;
+    opacity: 0;
+    transform-origin: 50% 0;
+    transform: scale(0.75) translateY(-21px);
+    transition: top 0s, transform 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
+    transition-delay: 0.2s, 0s, 0s
+}
+
+.pretty-select__item {
+    transition: background-color .2s;
+    min-height: 1em;
+    padding: 5px 20px;
+    line-height: 1.6em;
+    white-space: nowrap;
+    position: relative
+}
+
+.pretty-select__item:hover,
+.pretty-select__item--focus {
+    background-color: #dcdee0
+}
+
+.pretty-select__item--selected,
+.pretty-select__item--selected:hover {
+    background-color: #ced1d4
+}

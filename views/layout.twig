@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>{{ title }}</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <link rel="apple-touch-icon" href="/images/favicon.png">
+  <link rel="icon" sizes="192x192" href="/images/icons-192.png">
+  <link rel="icon" sizes="512x512" href="/images/icons-512.png">
+  <meta name="apple-mobile-web-app-title" content="bit21">
+  <meta name="mobile-web-app-title" content="bit21">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="mobile-web-app-status-bar-style" content="black">
+  <link rel="manifest" href="/manifest.json">
+
+  <link href="/splashscreens/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+  <link href="/splashscreens/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+  <link href="/splashscreens/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
+  <link href="/splashscreens/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
+  <link href="/splashscreens/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+  <link href="/splashscreens/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
+  <link href="/splashscreens/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+  <link href="/splashscreens/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+  <link href="/splashscreens/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+  <link href="/splashscreens/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+
+  <!-- Twitter
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@bit21com" />
+  <meta name="twitter:title" content="bit21.com - Provably Fair Gaming" />
+  <meta name="twitter:description" content="Fun to play on desktop and mobile. Blackjack, Dice, Slots, Roulette, Video Poker, Plinko, Minesweeper, Lotto." />
+  <meta name="twitter:image" content="/images/icons-512.png" />
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="/stylesheets/normalize.css">
+  <link rel="stylesheet" href="/stylesheets/playingcards2.css">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="/stylesheets/skeleton.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/magnific-popup.css">
+  <link rel="stylesheet" href="/stylesheets/addtohomescreen.css">
+  <link rel="stylesheet" href="/stylesheets/noty.css">
+  <link rel="stylesheet" href="/stylesheets/themes/relax.css">
+  <link rel="stylesheet" href="/stylesheets/pretty-select.css">
+
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+
+</head>
+<body>
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container">
+  	<a href="/"><img src='/images/bit21newlogo.png' style='height: 60px'></a>
+{% if user %}
+	<form method="post" action="/logout" style="display:inline; margin:0px;"><input type="hidden" name="_csrf" value="{{ csrfToken }}"><button type='submit' style='float:right; border-top:0px; border-top-left-radius:0px; border-top-right-radius:0px;'>Logout</button></form>
+	<a class="button" href="/account" style='margin-right:5px; float:right; border-top:0px; border-top-left-radius:0px; border-top-right-radius:0px; text-transform: lowercase;'>{{ user.username }}</a>
+{% else %}
+	<a class="button" href="/register" style='margin-left:5px; float:right; border-top:0px; border-top-left-radius:0px; border-top-right-radius:0px;'>Register</a>
+	<a class="button" href="/login" style='float:right; border-top:0px; border-top-left-radius:0px; border-top-right-radius:0px;'>Login</a>
+{% endif %}
+
+{% block body %}{% endblock %}
+
+	<div class="Community-list">
+		<a class="Community-list-element telegram" href="https://t.me/bit21com" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram-plane"></i><span class="Community-list-element-text">Telegram chat</span></a>
+		<a class="Community-list-element twitter" href="https://twitter.com/bit21com" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i><span class="Community-list-element-text">Twitter</span></a>
+		<a class="Community-list-element instagram" href="https://www.instagram.com/bit21com/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i><span class="Community-list-element-text">Instagram</span></a>
+		<a class="Community-list-element youtube" href="https://www.youtube.com/bit21com/" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i><span class="Community-list-element-text">Youtube</span></a>
+		<a class="Community-list-element facebook" href="https://www.facebook.com/groups/bit21com/" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i><span class="Community-list-element-text">Facebook</span></a>
+		<a class="Community-list-element reddit" href="https://reddit.com/r/bit21" target="_blank" rel="noopener noreferrer"><i class="fab fa-reddit-alien"></i><span class="Community-list-element-text">Reddit</span></a>
+		<a class="Community-list-element github" href="https://github.com/mrmikeo" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i><span class="Community-list-element-text">Github</span></a>
+		<a class="Community-list-element" href="https://qredit.io/" target="_blank" rel="noopener noreferrer"><img onmouseover="hover(this);" onmouseout="unhover(this);" src='/images/XQR_grey.png' style="width: 1.6em;"><span class="Community-list-element-text">Qredit</span></a>
+
+	</div>
+
+  </div>
+
+  <!-- Scripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script src="/javascripts/jquery.min.js"></script>
+  <script src="/javascripts/socket.io.slim.js"></script>
+  <script src="/javascripts/jquery.animate_from_to-1.0.js"></script>
+  <script src="/javascripts/image-preloader.js"></script>
+  <script src="/javascripts/jquery.magnific-popup.min.js"></script>
+  <script src="/javascripts/jquery.color-2.1.2.min.js"></script>
+  <script src="/javascripts/clipboard.min.js"></script>
+  <script src='/javascripts/jquery.playSound.js'></script>
+  <script src="/javascripts/md5.min.js"></script>
+  <script src="/javascripts/addtohomescreen.min.js"></script>
+  <script src="/javascripts/noty.min.js"></script>
+  <script src="/javascripts/pretty-select.js"></script>
+
+  {% block javascripts %}{% endblock %}
+
+<script>
+
+$(document).ready(function() {
+	addToHomescreen();	
+});
+
+function hover(element) {
+  element.setAttribute('src', '/images/XQR.png');
+}
+
+function unhover(element) {
+  element.setAttribute('src', '/images/XQR_grey.png');
+}
+</script>
+
+</body>
+
+
+</html>

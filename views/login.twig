@@ -1,0 +1,55 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+
+{% for type, message in messages %}
+	{% if (type == 'error') %}
+	<div class="isa_error">
+		<i class="fa fa-times-circle"></i>
+		{{ message }}
+	</div>
+	{% elseif (type == 'notice') %}
+	<div class="isa_success">
+		<i class="fa fa-check"></i>
+		{{ message }}
+	</div>
+	{% endif %}
+{% endfor %}
+
+    <div id='mainform'>
+
+		<form method='post' action='/login'>
+		  <div style="display:flex; flex-direction: column; justify-content:center; align-items:center;">
+		  	<div style='border-bottom:1px solid #ccc; width:60%; margin-bottom:10px; margin-top:20px;'><h4>Login</h4></div>
+			<div style="width:50%;">
+			  <label for="usernameemail">Username/Email</label>
+			  <input class="u-full-width" type="text" placeholder="username/email" name="username" id="username">
+			</div>
+			<div style="width:50%;">
+			  <label for="password">Password</label>
+			  <input class="u-full-width" type="password" placeholder="password" name="password" id="password">
+			</div>
+			<div style="width:50%; text-align:center;">
+				<input class="button-primary" type="submit" value="Login">
+			</div>
+
+		  </div>
+  		  <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+		</form>
+
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+<script>
+
+$(document).ready(function() {
+	
+
+    
+});    
+    
+</script>
+{% endblock %}
+
+

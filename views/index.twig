@@ -1,0 +1,209 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+
+{% if user %}
+	<div style='position:absolute; top:30px; right:10px;'>Balances: <span id='balancexqr' style="font-size:80%;"></span> <span style="font-size:80%;">XQR</span></div>
+	<div style='position:absolute; top:44px; right:10px;'><span id='balancecgt' style="font-size:80%;"></span> <span style="font-size:80%;">CGT</span></div>
+{% else %}
+	<div style='position:absolute; top:38px; right:10px;'>Balance: <span id='balancedemo' style="font-size:80%;"></span> <span style="font-size:80%;">DEMO</span></div>
+{% endif %}
+
+<style>
+
+.indexgame {
+    height:150px;
+    margin: 10px;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+.indexgame:hover {
+    position: relative;
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+    z-index: 1000;
+}
+
+
+</style>
+
+
+    <div id='mainform'>
+    	<div class='row'>
+			<div class="twelve columns">
+				<center>
+
+					<img src="/images/bit21_indexbg.png" id='indexheader' style="width:100%;"></a>
+
+				</center>
+			</div>
+		</div>
+    	<div class='row'>
+			<div class="four columns" style='height:220px;'>
+				<center>
+			
+
+					<a href='/blackjack' style="color: #000; font-weight: bold;">BlackJack / 21<br />
+					<img class='indexgame' src="/images/Blackjack-cards-and-chips.png"></a>
+
+
+
+
+			
+				</center>
+			</div>
+			<div class="four columns" style='height:220px;'>
+				<center>
+			
+
+					Dice<br />
+					<img class='indexgame' src="/images/comingsoon.png"></a>
+
+
+
+			
+				</center>
+			</div>
+			<div class="four columns" style='height:220px;'>
+				<center>
+			
+
+
+					CryptoGuesser<br />
+					<img class='indexgame' src="/images/comingsoon.png"></a>
+
+
+			
+				</center>
+			</div>
+			
+		</div>
+		
+    	<div class='row'>
+			<div class="four columns" style='height:220px;'>
+				<center>
+			
+
+					Roulette<br />
+					<img class='indexgame' src="/images/comingsoon.png"></a>
+
+
+
+
+
+			
+				</center>
+			</div>
+			<div class="four columns" style='height:220px;'>
+				<center>
+			
+
+					Video Poker<br />
+					<img class='indexgame' src="/images/comingsoon.png"></a>
+
+
+
+
+			
+				</center>
+			</div>
+			<div class="four columns" style='height:220px;'>
+				<center>
+			
+
+
+					Slots<br />
+					<img class='indexgame' src="/images/comingsoon.png"></a>
+
+
+
+			
+				</center>
+			</div>
+			
+		</div>
+		
+    	<div class='row'>
+			<div class="four columns" style='height:220px;'>
+				<center>
+			
+
+					Plinko<br />
+					<img class='indexgame' src="/images/comingsoon.png"></a>
+
+
+
+
+
+			
+				</center>
+			</div>
+			<div class="four columns" style='height:220px;'>
+				<center>
+			
+
+					Minesweeper<br />
+					<img class='indexgame' src="/images/comingsoon.png"></a>
+
+
+
+
+			
+				</center>
+			</div>
+			<div class="four columns" style="height:220px;">
+				<center>
+			
+
+
+					Lotto<br />
+					<img class='indexgame' src="/images/comingsoon.png"></a>
+
+
+
+			
+				</center>
+			</div>
+			
+		</div>
+		
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+<script>
+
+$(document).ready(function() {
+	
+	var socket = io('', {query: 'game=false'});
+	
+  	socket.on('balanceInfo', function (data) { 
+
+		if (data.balancedemo)
+		{
+
+			$('#balancedemo').html(data.balancedemo);
+
+		}
+		else
+		{
+
+			$('#balancexqr').html(data.balancexqr);
+			$('#balancecgt').html(data.balancecgt);
+
+		}
+
+  	});
+
+    
+});    
+    
+</script>
+{% endblock %}
+
+
