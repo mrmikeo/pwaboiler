@@ -54,7 +54,7 @@ var session = Session({
 
 var indexRouter = require('./routes/index');
 
-var serverPort = ini_config.server_port;
+var serverPort = 8181; //ini_config.server_port;
 
 var app = express();
 var server = http.createServer(app);
